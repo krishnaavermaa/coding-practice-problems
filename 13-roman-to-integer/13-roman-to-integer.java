@@ -5,12 +5,10 @@ class Solution {
         char c=' ';
         while(n-->0)
         {
-            int res=0;
             c=s.charAt(n);
             p=evaluate(c,p);
             sum=sum+p;
         }
-        //System.out.print("_");
         return sum;
     }
     public int evaluate(char c,int p)
