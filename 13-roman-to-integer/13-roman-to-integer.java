@@ -1,10 +1,9 @@
 class Solution {
     public int romanToInt(String s) {
         int n=s.length();
-        int sum=0,p=0;
+        int sum=0,p=0,temp;
         while(n-->0)
         {
-            int temp;
             temp=evaluate(s.charAt(n));
             p=temp<p?(-1)*temp:temp;
             sum=sum+p;
