@@ -6,7 +6,6 @@ public:
         sort(nums.begin(),nums.end());
         for(int i=0;i+2<nums.size();i++)
         {
-            //int x=0-nums[i];
             if(i>0 and nums[i]==nums[i-1]) continue;
             int j=nums.size()-1;
             int k=i+1;
@@ -19,9 +18,7 @@ public:
                     v.push_back(nums[k]);
                     v.push_back(nums[j]);
                     res.push_back(v);
-
-                        //sort(v.begin(),v.end());
-                        //s.insert(v);
+                    
                     j--;
                     while(k<j and nums[j]==nums[j+1])
                         j--;
@@ -35,11 +32,6 @@ public:
                     
             }         
         }
-        
-        // for(auto it= s.begin();it!=s.end();it++)
-        // {
-        //     res.push_back(*it);
-        // }
         return res;
         
     }
