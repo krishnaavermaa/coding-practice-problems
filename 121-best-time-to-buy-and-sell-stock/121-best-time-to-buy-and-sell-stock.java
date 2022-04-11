@@ -7,7 +7,7 @@ class Solution {
             if(prices[i]<=sm) sm=prices[i];
             else if(prices[i]-sm>profit) profit=prices[i]-sm;
         }
-        System.out.print(sm+" "+profit);
+        //System.out.print(sm+" "+profit);
         
         return profit;
     }
