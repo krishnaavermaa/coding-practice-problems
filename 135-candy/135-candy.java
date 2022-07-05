@@ -88,4 +88,23 @@ class Solution {
         check[i]=true;
         // System.out.println("END i="+i+" "+check[i]);
     }
+    /* THE ABOVE FUNCTION CAN BE REDUCED AS (recheck needed a lil)
+    public void updateCandy(boolean check[],int ratings[], int []candy,int i)
+    {
+        if(check[i]==true) return;
+        int pr=i>0?ratings[i-1]:-1;
+        int nr=i<ratings.length-1?ratings[i+1]:-1;
+        int cr=ratings[i];
+        if(pr==-1 && nr>=cr || nr==-1 && pr>=cr || cr<=pr && nr>=cr) candy[i]=1;
+        else if(cr>nr && (pr==-1 || cr<=pr)) {
+            updateCandy(check,ratings,candy,i+1);
+            candy[i]=candy[i+1]+1;
+        }
+        else if(cr>pr && (nr==-1 || cr<=pr)){
+            updateCandy(check,ratings,candy,i-1);
+            candy[i]=candy[i-1]+1;
+        }
+        check[i]=true;
+    }
+*/
 }
