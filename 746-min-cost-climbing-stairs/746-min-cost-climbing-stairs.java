@@ -35,10 +35,10 @@ class Solution {
         //using 2 pointer for tabulation/bottom up approach
         int last=cost[1];
         int last2last=cost[0];
-        
+        int tmp=-1;
         for(int i=2;i<len;i++)
         {
-            int tmp=last;
+            tmp=last;
             last=cost[i]+(last2last<=last?last2last:last);
             last2last=tmp;
         }
