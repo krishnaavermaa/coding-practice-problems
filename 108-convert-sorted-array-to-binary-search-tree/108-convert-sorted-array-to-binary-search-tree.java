@@ -42,11 +42,6 @@ class Solution {
 //                 }
             }
         }
-        Iterator it=height.entrySet().iterator();
-        while(it.hasNext())
-        {
-            Map.Entry entry=(Map.Entry)it.next();
-        }
         return head;
     }
     public void insert(TreeNode ptr,int ele, HashMap<TreeNode,Integer> height)
