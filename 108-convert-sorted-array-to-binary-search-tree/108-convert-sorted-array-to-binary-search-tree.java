@@ -28,17 +28,18 @@ class Solution {
             if(bf<=1 && bf>=-1) height.put(head,(lh>=rh)?lh+1:rh+1);
             else
             {
-                if(bf>0)
-                {
+//                 if(bf>0)
+//                 {
                     
-                    if(nums[i]<head.left.val) LLRotate(head, height);
-                    else if(nums[i]>head.left.val) LRRotate(head, height);
-                }
-                else if(bf<0)
-                {
-                    if(nums[i]>head.right.val) RRRotate(head, height);
-                    else if(nums[i]<head.right.val) RLRotate(head, height);
-                }
+//                     if(nums[i]<head.left.val) LLRotate(head, height);
+//                     else if(nums[i]>head.left.val) LRRotate(head, height);
+//                 }
+//                 else if(bf<0)
+//                 {
+//                     if(nums[i]>head.right.val) 
+                        RRRotate(head, height);
+//                     else if(nums[i]<head.right.val) RLRotate(head, height);
+//                 }
             }
         }
         Iterator it=height.entrySet().iterator();
@@ -78,37 +79,38 @@ class Solution {
         if(bf<=1 && bf>=-1) height.put(ptr,(lh>=rh)?lh+1:rh+1);
         else
         {
-            if(bf>0)
-            {
+//             if(bf>0)
+//             {
 
-                if(ele<L.val) LLRotate(ptr, height);
-                else if(ele>L.val) LRRotate(ptr, height);
-            }
-            else if(bf<0)
-            {
-                if(ele>R.val) RRRotate(ptr,height);
-                else if(ele<R.val) RLRotate(ptr, height);
-            }
+//                 if(ele<L.val) LLRotate(ptr, height);
+//                 else if(ele>L.val) LRRotate(ptr, height);
+//             }
+//             else if(bf<0)
+//             {
+//                 if(ele>R.val) 
+                    RRRotate(ptr,height);
+//                 else if(ele<R.val) RLRotate(ptr, height);
+//             }
         }
     }
-    public void LLRotate(TreeNode ptr,HashMap<TreeNode,Integer> height)
-    {
-        TreeNode tmp=new TreeNode(ptr.val);
-        tmp.right=ptr.right;
-        ptr.right=tmp;
-        ptr.val=ptr.left.val;
-        tmp=ptr.left.right;
-        ptr.left=ptr.left.left;
-        ptr.right.left=tmp;
+//     public void LLRotate(TreeNode ptr,HashMap<TreeNode,Integer> height)
+//     {
+//         TreeNode tmp=new TreeNode(ptr.val);
+//         tmp.right=ptr.right;
+//         ptr.right=tmp;
+//         ptr.val=ptr.left.val;
+//         tmp=ptr.left.right;
+//         ptr.left=ptr.left.left;
+//         ptr.right.left=tmp;
         
-        int lh=(ptr.right.left!=null)?height.get(ptr.right.left):0;
-        int rh=(ptr.right.right!=null)?height.get(ptr.right.right):0;
-        height.put(ptr.right,(lh>=rh)?lh+1:rh+1);
+//         int lh=(ptr.right.left!=null)?height.get(ptr.right.left):0;
+//         int rh=(ptr.right.right!=null)?height.get(ptr.right.right):0;
+//         height.put(ptr.right,(lh>=rh)?lh+1:rh+1);
         
-        lh=height.get(ptr.left);
-        rh=height.get(ptr.right);
-        height.put(ptr,(lh>=rh)?lh+1:rh+1);
-    }
+//         lh=height.get(ptr.left);
+//         rh=height.get(ptr.right);
+//         height.put(ptr,(lh>=rh)?lh+1:rh+1);
+//     }
     public void RRRotate(TreeNode ptr,HashMap<TreeNode,Integer> height)
     {
         TreeNode tmp=new TreeNode(ptr.val);
@@ -128,40 +130,40 @@ class Solution {
         rh=ptr.right!=null?height.get(ptr.right):0;
         height.put(ptr,(lh>=rh)?lh+1:rh+1);
     }
-    public void LRRotate(TreeNode ptr,HashMap<TreeNode,Integer> height)
-    {
-        TreeNode tmp=new TreeNode(ptr.val);
-        tmp.right=ptr.right;
-        tmp.left=ptr.left.right.right;
-        ptr.right=tmp;
-        ptr.val=ptr.left.right.val;
-        ptr.left.right=ptr.left.right.left;
+//     public void LRRotate(TreeNode ptr,HashMap<TreeNode,Integer> height)
+//     {
+//         TreeNode tmp=new TreeNode(ptr.val);
+//         tmp.right=ptr.right;
+//         tmp.left=ptr.left.right.right;
+//         ptr.right=tmp;
+//         ptr.val=ptr.left.right.val;
+//         ptr.left.right=ptr.left.right.left;
         
-        int lh=ptr.right.left!=null?height.get(ptr.right.left):0;
-        int rh=ptr.right.right!=null?height.get(ptr.right.right):0;
-        height.put(ptr.right,(lh>=rh)?lh+1:rh+1);
+//         int lh=ptr.right.left!=null?height.get(ptr.right.left):0;
+//         int rh=ptr.right.right!=null?height.get(ptr.right.right):0;
+//         height.put(ptr.right,(lh>=rh)?lh+1:rh+1);
         
-        lh=ptr.left!=null?height.get(ptr.left):0;
-        rh=ptr.right!=null?height.get(ptr.right):0;
-        height.put(ptr,(lh>=rh)?lh+1:rh+1);
-    }
-    public void RLRotate(TreeNode ptr,HashMap<TreeNode,Integer> height)
-    {
-        TreeNode tmp=new TreeNode(ptr.val);
-        tmp.left=ptr.left;
-        tmp.right=ptr.right.left.left;
-        ptr.left=tmp;
-        ptr.val=ptr.right.left.val;
-        ptr.right.left=ptr.right.left.right;
+//         lh=ptr.left!=null?height.get(ptr.left):0;
+//         rh=ptr.right!=null?height.get(ptr.right):0;
+//         height.put(ptr,(lh>=rh)?lh+1:rh+1);
+//     }
+//     public void RLRotate(TreeNode ptr,HashMap<TreeNode,Integer> height)
+//     {
+//         TreeNode tmp=new TreeNode(ptr.val);
+//         tmp.left=ptr.left;
+//         tmp.right=ptr.right.left.left;
+//         ptr.left=tmp;
+//         ptr.val=ptr.right.left.val;
+//         ptr.right.left=ptr.right.left.right;
         
-        int lh=ptr.left.left!=null?height.get(ptr.left.left):0;
-        int rh=ptr.left.right!=null?height.get(ptr.left.right):0;
-        height.put(ptr.left,(lh>=rh)?lh+1:rh+1);
+//         int lh=ptr.left.left!=null?height.get(ptr.left.left):0;
+//         int rh=ptr.left.right!=null?height.get(ptr.left.right):0;
+//         height.put(ptr.left,(lh>=rh)?lh+1:rh+1);
         
-        lh=ptr.left!=null?height.get(ptr.left):0;
-        rh=ptr.right!=null?height.get(ptr.right):0;
-        height.put(ptr,(lh>=rh)?lh+1:rh+1);
-    }
+//         lh=ptr.left!=null?height.get(ptr.left):0;
+//         rh=ptr.right!=null?height.get(ptr.right):0;
+//         height.put(ptr,(lh>=rh)?lh+1:rh+1);
+//     }
     
     
 }
