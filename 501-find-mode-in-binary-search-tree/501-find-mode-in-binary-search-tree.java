@@ -25,7 +25,6 @@ class Solution {
             int k=(int)it.next();
             if(freq.get(k)>max) max=freq.get(k);
         }
-        System.out.print(max);
         it=keys.iterator();
         List<Integer> list=new LinkedList<>();
         while(it.hasNext())
