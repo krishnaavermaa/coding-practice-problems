@@ -18,17 +18,15 @@ class Solution {
     public String tree2str(TreeNode root) {
         str="";
         recurr(root);
-        return str;
+        return str.substring(1,str.length()-1);
     }
     public void recurr(TreeNode root)
     {
-        boolean flag=true;
-        if(str.equals("")) flag=false;
-        if(flag) str+="(";
+        str+="(";
         str+=String.valueOf(root.val);
         if(root.left!=null) recurr(root.left);
         else if(root.right!=null) str+="()";
         if(root.right!=null) recurr(root.right);
-        if(flag) str+=")";
+        str+=")";
     }
 }
