@@ -28,7 +28,7 @@ class Solution {
     public void func(Queue<TreeNode> q1, Queue<TreeNode> q2, List<Double> list)
     {
         TreeNode node;
-        Double sum=0.0;
+        double sum=0.0;
         int c=0;
         while(!q1.isEmpty())
         {
@@ -38,7 +38,7 @@ class Solution {
             sum+=node.val;
             c++;
         }
-        list.add(Double.parseDouble(String.format("%.5f",sum/(double)c)));
+        list.add(sum/(double)c);
         if(q2.peek()!=null) func(q2,q1,list);
     }
 }
