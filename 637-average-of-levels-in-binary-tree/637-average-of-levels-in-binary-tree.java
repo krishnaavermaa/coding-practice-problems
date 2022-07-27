@@ -14,10 +14,7 @@
  * }
  */
 class Solution {
-    DecimalFormat df;
     public List<Double> averageOfLevels(TreeNode root) {
-        df=new DecimalFormat();
-        df.setMaximumFractionDigits(5);
         Queue<TreeNode> q1=new LinkedList<>();
         Queue<TreeNode> q2=new LinkedList<>();
         List<Double> list=new LinkedList<>();
