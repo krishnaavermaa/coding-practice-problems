@@ -21,7 +21,7 @@ class Solution {
     public int func(int rootval, TreeNode node)
     {
         if(node.left==null && node.right==null) return node.val;
-        int l=-1,r=-1,res=-1;
+        int l=-1,r=-1;
         if(node.left.val!=node.right.val) {
             l=node.left.val;
             r=node.right.val;
