@@ -14,19 +14,21 @@
  * }
  */
 class Solution {
+    int rootval;
     public int findSecondMinimumValue(TreeNode root) {
-        int res=func(root.val,root);
-        return res!=root.val?res:-1;
+        rootval=root.val;
+        int res=func(root);
+        return res!=rootval?res:-1;
     }
-    public int func(int rootval, TreeNode node)
+    public int func(TreeNode node)
     {
         if(node.left==null && node.right==null) return node.val;
         int l=-1,r=-1;
         if(node.left.val!=node.right.val) {
             l=node.left.val;
             r=node.right.val;
-            if(l<r && l==rootval) l=func(rootval,node.left);
-            else if(r<l && r==rootval) r=func(rootval,node.right);
+            if(l<r && l==rootval) l=func(node.left);
+            else if(r<l && r==rootval) r=func(node.right);
             if(l!=rootval && r!=rootval)
             {
                 if(l==-1||r==-1) return l!=-1?l:r;
@@ -36,8 +38,8 @@ class Solution {
         }
         else
         {
-            l=func(rootval,node.left);
-            r=func(rootval,node.right);
+            l=func(node.left);
+            r=func(node.right);
             if(l==r) return -1;
             if(l!=rootval && r!=rootval)
             {
