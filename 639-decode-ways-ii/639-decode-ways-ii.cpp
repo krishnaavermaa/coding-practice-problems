@@ -27,10 +27,7 @@ public:
                     else
                         dp[i] += dp[i - 1] % M;
                 } 
-                
-                //for(int i = 0; i <= s.size(); i++)
-                    //cout << dp[i] << " ";
-                //cout << "\n";
+
                 
                 if(s[i - 2] == '*'){
                     if(s[i - 1] == '*')
@@ -57,10 +54,6 @@ public:
                 }
             }
         }
-        
-        //for(int i = 0; i <= s.size(); i++)
-            //cout << dp[i] << " ";
-        //cout << "\n";
         
         return dp[s.size()] % M;
     }
