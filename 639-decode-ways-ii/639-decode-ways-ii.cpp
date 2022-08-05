@@ -1,72 +1,67 @@
+#define ll long long
 class Solution {
 public:
-    int numDecodings(string s) {
+    
+    ll numDecodings(string s) {
         
-        int n = s.length();
-        int MOD = 1000000007;
-        vector<long long int> dp(3);
-        dp[n%3] = 1;
+        ll M = 1000000007;
+        ll dp[s.size() + 1];
+        memset(dp, 0, sizeof(dp));
         
-        // intitialse answer for last element
-        if(s[n-1] == '0')
-            dp[(n-1)%3] = 0;
-        else if( s[n-1] == '*')
-            dp[(n-1)%3] = 9;
-        else 
-            dp[(n-1)%3] = 1;
+        dp[0] = 1;
         
-        
-        // fill dp
-        for (int i = n-2; i>=0 ; i--){
-           
-            dp[i%3] = 0;
-            dp[(i+1)%3] = dp[(i+1)%3] % MOD;
-            dp[(i+2)%3] = dp[(i+2)%3] % MOD;
-            
-            
-            // considering  only 1 character 
-            if(s[i] != '0'){
-                if(s[i] == '*')
-                    dp[i%3] += 9*dp[(i+1)%3];
-                else
-                    dp[i%3] += dp[(i+1)%3];
-            }
-            
-            
-            
-            // considering 2 characters
-            if (s[i] == '1'){
-                if (s[i+1] == '*')
-                    dp[i%3] += 9*dp[(i+2)%3];
-                else
-                    dp[i%3] += dp[(i+2)%3];
-                dp[i%3] = dp[i%3] % MOD;
-            }
-            
-            else if(s[i] == '2'){
-                if (s[i+1] == '*')
-                    dp[i%3] += 6 * dp[(i+2)%3];
-                else if (s[i+1] <= '6')
-                    dp[i%3] += dp[(i+2)%3];
-                else
-                    dp[i%3] += 0;
-                dp[i%3] = dp[i%3] % MOD;
-            }
-            
-            else if (s[i] == '*'){
-                if (s[i+1] == '*')
-                    dp[i%3] += 15*dp[(i+2)%3];
-                else if(s[i+1] <= '6')
-                    dp[i%3] += 2*dp[(i+2)%3];
-                else
-                    dp[i%3]+= dp[(i+2)%3];
-                dp[i%3] = dp[i%3] % MOD;
-            }
-            dp[i%3] = dp[i%3] % MOD;
+        for(int i = 1; i <= s.size(); i++){
+            if(s[i - 1] == '*' and i == 1)
+                dp[i] = 9;
+            else if(s[i - 1] == '0' and i == 1)
+                dp[i] = 0;
+            else if(i == 1)
+                dp[i] = 1;
+            else{
+                //now we need to check previous 2 characters for *,digit combination
+                if(s[i - 1] == '*')
+                    dp[i] += (9 * dp[i - 1]) % M;
+                else{
+                    if(s[i - 1] == '0')//since previous zero combination not possible according to question no partition can take place with a previous character 0
+                        dp[i] = 0;
+                    else
+                        dp[i] += dp[i - 1] % M;
+                } 
                 
+                //for(int i = 0; i <= s.size(); i++)
+                    //cout << dp[i] << " ";
+                //cout << "\n";
+                
+                if(s[i - 2] == '*'){
+                    if(s[i - 1] == '*')
+                        dp[i] += (15 * dp[i - 2]) % M;
+                    else if(s[i - 1] > '6') // only 1 way
+                        dp[i] += dp[i - 2] % M;
+                    else
+                        dp[i] += (2 * dp[i - 2]) % M;
+                        
+                }
+                else if(s[i - 2] == '1'){
+                    if(s[i - 1] == '*'){
+                        dp[i] += (9 * dp[i - 2]) % M;
+                    }
+                    else
+                        dp[i] += dp[i - 2] % M;
+                    
+                }
+                else if(s[i - 2] == '2'){
+                    if(s[i - 1] == '*')
+                        dp[i] += (6 * dp[i - 2]) % M;
+                    else if(s[i - 1] <= '6')
+                        dp[i] += dp[i - 2] % M;
+                }
+            }
         }
-        return dp[0%3] % MOD;
-
         
+        //for(int i = 0; i <= s.size(); i++)
+            //cout << dp[i] << " ";
+        //cout << "\n";
+        
+        return dp[s.size()] % M;
     }
 };
