@@ -17,8 +17,7 @@ class Solution {
     int pos;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         pos=0;
-        TreeNode root=func(preorder,inorder,0,inorder.length-1);
-        return root;
+        return func(preorder,inorder,0,inorder.length-1);
     }
     public TreeNode func(int[] preorder, int []inorder,int s,int e)
     {
