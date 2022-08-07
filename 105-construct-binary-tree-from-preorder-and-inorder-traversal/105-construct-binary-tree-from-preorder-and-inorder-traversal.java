@@ -34,6 +34,7 @@ class Solution {
                     pos++;
                     root.right=func(preorder,inorder,i+1,e);
                 }
+                return root;
             }
         return root;
     }
