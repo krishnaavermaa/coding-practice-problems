@@ -34,7 +34,7 @@ class Solution {
                     pos--;
                     root.left=buildSubtree(postorder,inorder,s,i-1);
                 }
-                break;
+                return root;
             }
         return root;
     }
