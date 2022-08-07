@@ -36,7 +36,7 @@ class Solution {
         }
         if(q2.peek()!=null)
         {
-            List<Integer> list=new ArrayList<>(q2.size());
+            List<Integer> list=new LinkedList<>();
             q2.forEach(ele->list.add(ele.val));
             res.add(list);
             levelOrder(q2,q1);
