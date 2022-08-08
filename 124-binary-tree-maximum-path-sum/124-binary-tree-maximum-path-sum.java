@@ -17,8 +17,8 @@ class Solution {
     int max;
     public int maxPathSum(TreeNode root) {
         max=-1001;
-        int tmp=recurr(root);
-        if(tmp>max) max=tmp;
+        recurr(root);
+        //(tmp>max) max=tmp;
         return max;
     }
     public int recurr(TreeNode root)
