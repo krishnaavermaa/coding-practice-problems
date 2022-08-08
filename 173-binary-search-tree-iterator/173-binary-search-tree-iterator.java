@@ -15,41 +15,25 @@
  */
 class BSTIterator {
 
-    Queue<Integer> q;
+    Stack<TreeNode> stack;
     public BSTIterator(TreeNode root) {
-        q=new LinkedList<>();
-        while(root!=null)
-        {
-            if(root.left==null)
-            {
-                q.add(root.val);
-                root=root.right;
-            }
-            else
-            {
-                TreeNode inpred=root.left;
-                while(inpred.right!=null && inpred.right!=root)
-                    inpred=inpred.right;
-                if(inpred.right==null) {
-                    inpred.right=root;
-                    root=root.left;
-                }
-                if(inpred.right==root) {
-                    q.add(root.val);
-                    root=root.right;
-                    inpred.right=null;
-                }
-                
-            }
-        }
+        stack=new Stack<>();
+        for(;root!=null;stack.push(root),root=root.left);
+        System.out.println(stack.size());
     }
     
     public int next() {
-        return q.poll();
+        System.out.println("#"+stack.size());
+        TreeNode node=stack.pop();
+        if(node.right!=null){
+            TreeNode tmp=node.right;
+            for(;tmp!=null;stack.push(tmp),tmp=tmp.left);
+        }
+        return node.val;
     }
     
     public boolean hasNext() {
-        return (q.peek()!=null);
+        return !stack.isEmpty();
     }
 }
 
