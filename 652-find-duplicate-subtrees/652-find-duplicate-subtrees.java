@@ -19,18 +19,19 @@ class Solution {
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         res=new LinkedList<>();
         map=new HashMap<>();
-        recurr(root,0);
+        recurr(root);
         return res;
     }
-    public String recurr(TreeNode root, int lev)
+    public String recurr(TreeNode root)
     {
         String left="",right="";
-        if(root.left!=null) left=recurr(root.left,lev+1)+"L";
-        if(root.right!=null) right=recurr(root.right,lev+1)+"R";
+        if(root.left!=null) left=recurr(root.left)+"L";
+        if(root.right!=null) right=recurr(root.right)+"R";
         String str=left+right+String.valueOf(root.val);
         if(map.containsKey(str))
         {
-            if(map.get(str)==0){
+            if(map.get(str)==0)
+            {
                 res.add(root);
                 map.put(str,1);
             }
