@@ -40,7 +40,7 @@ class Solution {
             if(!right) root.right=null;
         }
         if(!safe.contains(root)) flag= false;
-        set.remove(root);
+        //set.remove(root);
         return flag;
     }
     
