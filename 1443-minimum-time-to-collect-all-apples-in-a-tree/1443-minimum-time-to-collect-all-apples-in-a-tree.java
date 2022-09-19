@@ -5,6 +5,7 @@ class Solution {
         visited=new int[n];
         list=new LinkedList[n];
         Arrays.fill(visited,0);
+    //dont use Arrays.fill(list,new LinkedList()) as it will share one object with all index
         for(int i=0;i<n;i++) list[i]=new LinkedList<>();
         for(int i=0;i<edges.length;i++)
         {
